@@ -17,6 +17,7 @@ form {
 label {
   display: block;
   margin-bottom: .5em;
+  float: left;
 }
 
 input {
