@@ -1,6 +1,7 @@
 import boto3
 import json
-from prompts import prompt
+from prompts import *
+from wolframalpha import *
 
 
 #Replace these values with the matching credentials upon usage
@@ -24,7 +25,21 @@ modelId = 'anthropic.claude-v2'
 accept = 'application/json'
 contentType = 'application/json'
 
-def query(input):
+def query(input: str, type: str) -> str:
+    if type == "english": prompt = english_prompt
+    elif type == "math": prompt = math_prompt
+    elif type == "social_studies": prompt = social_studies_prompt
+    elif type == "science": prompt = science_prompt
+    elif type == "PE": prompt = PE_prompt
+    elif type == "art": prompt = art_prompt
+    elif type == "schedule": prompt = schedule_prompt
+    elif type == "help" or type == "math_help": 
+        if type == "help":
+            input = input + "\n" + w.query(input)
+        elif type == "math_help":
+            input = input + "\n" + w.query(input)
+        prompt = help_prompt
+
     body = json.dumps({
         "prompt": prompt.format(input),
         "max_tokens_to_sample": 4096,
@@ -33,17 +48,6 @@ def query(input):
         "top_p": 0.5,
         "stop_sequences": ["\n\nHuman:"]
     })
-
     response = bedrock.invoke_model(body=body, modelId=modelId, accept=accept, contentType=contentType)
     response_body = json.loads(response.get('body').read())
     return response_body.get('completion')
-
-print("Welcome to the virtual teaching assistant. To quit, type \"quit\".") 
-
-user_query = ""
-while True: 
-    user_query = input("\rType your response here:")
-    if user_query == "quit":
-        break
-    result = query(user_query)
-    print(result)
