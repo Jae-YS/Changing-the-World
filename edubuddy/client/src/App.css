@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+
+
 }
 
 form {
@@ -28,17 +30,17 @@ input {
 }
 
 button {
-  width: 100%;
+  width: 100px; /* Adjust as needed or remove */
   padding: .5em;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
+  background-color: #85662b;
   color: white;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #85662b;
 }
 
 select {
@@ -78,13 +80,24 @@ select {
 
 .content {
   color: #8b7f75;
+  display: flex; /* Add this line */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically (if you want vertical centering) */
+  flex-direction: column; /* Stack children vertically */
   max-height: 0;
   overflow: hidden;
-  transition: all 0.5s cubic-bezier(0,1,0,1);
+  transition: max-height 0.5s cubic-bezier(0,1,0,1);
 }
 
+
+
+
 .contentshow {
-  height: auto;
-  max-height: 9999p;
-  transition: all 0.5s cubic-bezier(0,1,0,1);
+  height: auto; /* You can remove this line if using max-height for the transition */
+  max-height: 9999px; /* Correct the unit from 'p' to 'px' */
+  display: flex; /* Make sure flex properties are active */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: max-height 0.5s cubic-bezier(0,1,0,1);
 }

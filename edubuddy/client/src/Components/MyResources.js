@@ -10,7 +10,7 @@ function MyResources(){
 
     return (
         <div>
-            <h1>My Curriculum</h1>
+            <h1>My Resources</h1>
             <div className='accordion'>
                 {data.map((block, blockIndex) => (
                     <div key={blockIndex}>
@@ -21,7 +21,8 @@ function MyResources(){
                             return (
                                 <div className='item' key={id}>
                                     <div className="title" onClick={() => toggle(id)}>
-                                        <h3>{item.title}</h3>
+                                        <h3>{item.subject}</h3>
+                                        <h4>{item.title}</h4>
                                         <span>{selected === id ? '-' : '+'}</span>
                                     </div>  
                                     {selected === id && (
@@ -44,13 +45,15 @@ const data = [
         date: "Monday, Nov 4, 2023",
         details: [
             {
-            title: "Reading",
-            description: 'Something working Is this actually',
-            button: 'Start'
-        },
-        {   title: "Science", 
-            description: "Creative Writing - Imagine you find a magic lamp...", 
-            button: "Start" },
+                subject: "Reading & Writing", 
+                title: "Lecture",
+                description: 'Something working Is this actually',
+                button: 'Start'
+            },
+            {   subject: "Mathematics", 
+                title: "Homework", 
+                description: "Creative Writing - Imagine you find a magic lamp...", 
+                button: "Start" },
         ]
         
     },
@@ -58,11 +61,13 @@ const data = [
         date: "Monday, Nov 4, 2023",
         details: [
             {
-                title: "Reading",
+                subject: "Reading & Writing", 
+                title: "Lecture",
                 description: 'Something working Is this actually',
                 button: 'Start'
             },
-            {   title: "Science", 
+            {   subject: "Mathematics", 
+                title: "Homework", 
                 description: "Creative Writing - Imagine you find a magic lamp...", 
                 button: "Start" },
         ]
