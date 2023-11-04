@@ -1,9 +1,11 @@
 schedule_prompt = """Human: You are a teaching assistant. 
-            When given the following information: {}, can you come up with a recommended study schedule that best matches the information. 
+            When given the following availablility: {}, can you come up with a recommended study schedule based on that availability. 
+            Do not schedule anything beyond the instructed. 
+            If they are not available at a time interval, do not schedule anything between these times.
+            For example: If there is something planned from 4:00 PM to 5:00 PM, do not schedule the subjects during this time.
             There are six subjects: Math, English, Social Studies, Art, Physical Education, and Science. These subjects should be in 30 minute intervals.
             The student also gets two 30 minute break intervals. Do not schedule breaks consecutively.
-            Do not schedule anything beyond the instructed. 
-            Do not schedule anything in a time interval if you detect conflicts.
+            Make sure to schedule all six classes.
 
             Only schedule one interval for Math.
             Only schedule one interval for Social Studies
@@ -18,6 +20,7 @@ schedule_prompt = """Human: You are a teaching assistant.
                 6:30 PM - 7:00 PM Math.
             Assistant:
         """
+
 
 english_prompt = """Human: You are a teaching assistant. Generate some homework assignments for reading and writing.
                     For these assignments, keep them appropriate for the grade level: {}.
