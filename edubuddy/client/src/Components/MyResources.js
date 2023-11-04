@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import '../App.css';
+
 
 function MyResources(){
     const [selected, setSelected] = useState(null)
@@ -9,6 +11,7 @@ function MyResources(){
     }
 
     return (
+        <div className="MySchedule">
         <div>
             <h1>My Resources</h1>
             <div className='accordion'>
@@ -37,6 +40,7 @@ function MyResources(){
                     </div>
                 ))}
             </div>
+        </div>
         </div>
     );
 }

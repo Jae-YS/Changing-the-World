@@ -36,7 +36,7 @@ function GettingStarted() {
       };
     
       return (
-        <div className="App" style={{ width: '1680px', height: '1024px', background: '#FFF' }}>
+        <div className="GettingStarted" style={{ background: '#FFF' }}>
           <header className="App-header">
             <h1>EduBuddy</h1>
           </header>
