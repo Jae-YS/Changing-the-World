@@ -34,6 +34,31 @@ function GettingStarted() {
         console.log(formData);
         // Process the data
       };
+
+      const userData = {
+        ...formData,
+        availability
+      }
+
+      fetch('http://localhost:10000/new', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText)
+        }
+        return response.json()
+      })
+      .then((data) => {
+        console.log('Success:', data)
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+      })
     
       return (
         <div className="App" style={{ width: '1680px', height: '1024px', background: '#FFF' }}>
