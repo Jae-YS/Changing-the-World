@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "symbolic-math-404116",
+  "private_key_id": "2d53093f8c7295d0ae83773c317fe0ae2d76f102",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCu4D5RAo2SuF2O\nHRlRSRJ7pCzT3xQ55WbnLTM61SRnf+8AVRM4+3ejGFWlo20rM99LJ6QtJ6XYdk7e\n9Bw3si27vJdBHaxZAtrIEEhzbb8edeoCRQVRI68Wu5IHlXHUhwOD45lhDIK1zTg+\nlUuAHJR+smmbZl4LqcyWn22CV78tMzFH156YYTWVVizZ3jjxgzvhWX4wX/5Z/6qY\nrxo0Ra65C7NPAIhRLlu2bKD1sbbJm07xac/XStI2RZ/Ff3vu/OM2R3lan4kRl/gx\nXlY5ysUIkRn80U0lptQsDnyOncj2iaEz85LgBs6VlXKaMiJzH6dpLo/3fm0iQNWI\n/P40OiYXAgMBAAECggEATAaCIP7epIARcCSXap69cdI0iOGtLeRc4bjlUjjybCqS\nsY7K3hV49AcyyOFtJwCUnVw9BEJ918bLUCNJFy+XsUvyZ+UqFcJncd2eWcxG78us\ncdMm1hkQ1+2wtSpTw+T0csSiXC4vrzDqOE74dVg3eINA5UXSMfjeUEc8ORPDsbac\n1sLumw1LCj0ws8sVNLuj1l2Ma2qWDYIkYYuF7eCeEQrPNouGKGJg7P9J7QMfq57p\nbGEzCtnNdtQ6rMVPdBhaJEF7lTg1uu8Kfu/h+gJMA/YPn2c7aQzgYxg/g3Npza50\n+ys6tfbJwdeMkN584AkrlxU4V1u6L12pcbxkCRgObQKBgQDixFYcvhYwBxoMai2Q\nDaBrmzm8f+ICKAykm9YRy/XkRrSGuL3wUN66fVsk6WNzlx2kpG8oLrC7SgFCh4ht\ndiwquKpZIIvHlrg5gO85TBb0DvzKLH7XJ0PooKhWsy523uoIwQfwCXiBEvaQM8jz\n7KIUaUuE//zYBXBMUcaQBlm9ZQKBgQDFa2xcpl+UMJpq0L2O0kti7eQbMNA0MtiY\nOBZv/3x1/nE/Kj9oHaI7Wb7MrrYrYUMj4WT9fj9T7kl2l/b92tKK4roU+cSWlEN4\ntpFGd8CHsb86gFecbx7N6Ww5sKhC/e2W6nKksRnxepOBakvkeofpFXiMFSAEWQML\nDBzGf60rywKBgFSdOhyDeTf2jmuveszTqNY+F28UsLppQz5wv5Hobxn8oAPdD1KK\nenFPsSC2zVsmOfNjP+7YbS2VUZ8Hf4qIm7ZdLYMQN9gDjz41tA3HLJFovj6aF8Ik\nbpxwxh+DwISubNlTXajdf895yfLIv+T0mQ3QtFMuSaQ5c0um/9Zh6D5ZAoGAShqA\nmmZ5Cg8UZ3PjM3EMix3wuaQhAvbzBnBHO9MSzNeteqBJHLPC6bROQlZyWuYvZZB9\ncAmri72uJa31MGSrEyb34le+yybsDKu67FCXHFhEB5mVSUsMrQ4paZ4+Cqd2P2fR\nkLBJpLL2G2XjBuhXi85baXmkgv1GfycUxg222vECgYAFG9PXffLCkwruO3mO0kEE\ngH7AY3wLULCmXwQFROxvGflezZjSt6nAKTf4u2ToKyWADm8VM8js51ZNcgfWo4SD\np7ZWyhFMTVuse034+ySXEcREKIQJmtyqSimDxmQyH4SA4zf9bqDNi9T1Jug0hODd\nOaew9+wGpnrFVsb6Gm6ePw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "rpi-hacks@symbolic-math-404116.iam.gserviceaccount.com",
+  "client_id": "118150549625501286673",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/rpi-hacks%40symbolic-math-404116.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
