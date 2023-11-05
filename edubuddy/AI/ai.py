@@ -3,7 +3,7 @@ from flask_cors import CORS
 import boto3
 import json
 from prompts import help_prompt, math_prompt, social_studies_prompt, english_prompt, english_prompt_1, science_prompt, PE_prompt, art_prompt, schedule_prompt, curriculum_prompt
-from wolfram import w_query, step_by_step
+from wolfram import w_query
 
 app = Flask(__name__)
 
@@ -81,4 +81,4 @@ def handle_query():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(port=12000,debug=True)
+    app.run(port=10000,debug=True)

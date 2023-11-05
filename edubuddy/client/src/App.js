@@ -6,7 +6,6 @@ import MySchedule from "./Components/MySchedule.js";
 import MyResources from "./Components/MyResources.js";
 import Navigation from "./Components/Navigation.js";
 import Homework from "./Components/Homework.js";
-import HelpMe from "./Components/HelpMe.js";
 
 function App() {
   const [userSchedule, setUserSchedule] = useState("");
@@ -94,8 +93,10 @@ function App() {
           path="/resources"
           element={<MyResources userCurriculum={userCurriculum} user={user} />}
         />
-        <Route path="/resources/homework" element={<Homework />} />
-        <Route path="/help-me" element={<HelpMe />} />
+        <Route
+          path="/resources/homework"
+          element={<Homework userSchedule={userSchedule} />}
+        />
       </Routes>
     </Router>
   );
