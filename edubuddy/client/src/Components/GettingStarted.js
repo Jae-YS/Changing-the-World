@@ -1,60 +1,64 @@
-import React, { useState } from 'react';
-import '../App.css';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "../App.css";
+import { useNavigate } from "react-router-dom";
 
-function GettingStarted() {
+function GettingStarted({ updateUser }) {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-  
-    const [formData, setFormData] = useState({
-        name: '',
-        birthDate: '',
-        educationLevel: '',
-      });
-    
-      const [availability, setAvailability] = useState({
-        startTime: '',
-        endTime: ''
-      });
-    
-      const handleAvailabilityChange = (e) => {
-        const { name, value } = e.target;
-        setAvailability((prevAvailability) => ({
-          ...prevAvailability,
-          [name]: value,
-        }));
-      };
-    
-      const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          [name]: value,
-        }));
-      };
+  const [formData, setFormData] = useState({
+    name: "",
+    birthDate: "",
+    educationLevel: "",
+  });
 
-      function handleResult(apiResponse) {
-        console.log('The API returned:', apiResponse)
-        navigate('/schedule', { state: { apiResponse } });
-      }
+  const [availability, setAvailability] = useState({
+    startTime: "",
+    endTime: "",
+  });
 
-      var userInput = ""
-    
-      const handleSubmit = (e) => {
-        e.preventDefault();
+  const handleAvailabilityChange = (e) => {
+    const { name, value } = e.target;
+    setAvailability((prevAvailability) => ({
+      ...prevAvailability,
+      [name]: value,
+    }));
+  };
 
-        const userData = {
-          ...formData,
-          availability
-        }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
 
-        console.log(userData)
+  const handleResult = async (userData, apiResponse) => {
+    console.log("The API returned:", apiResponse);
+    await updateUser(userData, apiResponse); // Wait for updateUser to complete
+
+    // Add a debug statement to ensure navigate is called after updateUser
+    console.log("Navigating to /schedule...");
+
+    navigate("/schedule", { state: { apiResponse } });
+  };
+
+  var userInput = "";
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const userData = {
+      ...formData,
+      availability,
+    };
+
+    console.log(userData);
 
         // TODO: remove this once backend is set up
         userInput += "Student's name is " + userData.name + ".\n" + "Student is available from " + String(userData.availability.startTime) + " to " + String(userData.availability.endTime) + ".\n"
         console.log(userInput)
 
-        fetch('http://127.0.0.1:5000/api/query', {
+        fetch('http://127.0.0.1:8000/api/query', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -149,4 +153,4 @@ function GettingStarted() {
       );
 }
 
-export default GettingStarted
+export default GettingStarted;

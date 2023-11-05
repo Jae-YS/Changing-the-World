@@ -1,6 +1,6 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom'
-import "../Styles/NavBar.css"
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "../Styles/NavBar.css";
 
 function Navigation() {
     return (
@@ -14,4 +14,4 @@ function Navigation() {
     );
 }
 
-export default Navigation
+export default Navigation;
