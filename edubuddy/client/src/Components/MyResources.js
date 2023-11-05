@@ -3,6 +3,9 @@ import "../App.css";
 import { useNavigate } from "react-router-dom";
 
 const ScheduleItem = ({ item, id, isSelected, onToggle, onNavigate }) => {
+  // const handleOnSubmit = (...) => {
+
+  // }
   return (
     <div className="item">
       <div className="title" onClick={() => onToggle(id)}>
@@ -24,17 +27,17 @@ const ScheduleItem = ({ item, id, isSelected, onToggle, onNavigate }) => {
 
 function MyResources({ userCurriculum, user }) {
   console.log(user);
-  console.log(userCurriculum);
+  //   console.log(userCurriculum);
+  const [homework, setHomework] = useState({});
   const [selected, setSelected] = useState(null);
   const navigate = useNavigate();
-  // const [dataArray, setDataArray] = useState([]); // Initialize dataArray as an empty array
 
   const toggle = (id) => {
     setSelected(selected === id ? null : id);
   };
 
   const response = userCurriculum.response;
-  console.log(response);
+  //   console.log(response);
   let list = [];
   let dateLists = [];
   let dataArray = [];
@@ -82,7 +85,6 @@ function MyResources({ userCurriculum, user }) {
     console.log(list);
 
     dateLists = [...new Set(list.map((item) => item.date))];
-
   } catch (error) {
     console.error("Error:", error);
   }
@@ -91,14 +93,15 @@ function MyResources({ userCurriculum, user }) {
     // Define the action to be taken when the button is clicked
     alert("Button clicked!");
 
-    const handleResult = async (apiResponse) => {
-      console.log("The API returned:", apiResponse);
-      // await updateUser(apiResponse); // Wait for updateUser to complete
-
-      // Add a debug statement to ensure navigate is called after updateUser
-      // console.log("Navigating to /schedule...");
-
-      // navigate("/schedule", { state: { apiResponse } });
+    const handleResponse = (apiResponse, date, subject_type) => {
+      setHomework((homework) => [
+        ...homework,
+        {
+          date: date,
+          subject: subject_type,
+          description: apiResponse,
+        },
+      ]);
     };
 
     const gen_list = list.map((item) => {
@@ -131,13 +134,16 @@ function MyResources({ userCurriculum, user }) {
           }
         })
         .then((apiResponse) => {
-          handleResult(apiResponse);
+          console.log("This is API response:", apiResponse);
+          handleResponse(apiResponse, date, subject_type);
         })
         .catch((error) => {
           console.error("Error");
         });
     });
   };
+
+  console.log("This is homework:", homework);
 
   return (
     <div className="MySchedule">
