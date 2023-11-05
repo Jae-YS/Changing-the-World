@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import '../App.css';
+import { useNavigate } from 'react-router-dom';
 
 function GettingStarted() {
+
+    const navigate = useNavigate();
+  
     const [formData, setFormData] = useState({
         name: '',
         birthDate: '',
@@ -28,11 +32,16 @@ function GettingStarted() {
           [name]: value,
         }));
       };
+
+      function handleResult(apiResponse) {
+        console.log('The API returned:', apiResponse)
+        navigate('/schedule', { state: { apiResponse } });
+      }
+
+      var userInput = ""
     
       const handleSubmit = (e) => {
         e.preventDefault();
-
-        var res = ""
 
         const userData = {
           ...formData,
@@ -41,13 +50,34 @@ function GettingStarted() {
 
         console.log(userData)
 
-
         // TODO: remove this once backend is set up
-        res += "Student's name is " + userData.name + ".\n" + "Student is available from " + String(userData.availability.startTime) + " to " + String(userData.availability.endTime) + ".\n"
-        console.log(res)
-      };
+        userInput += "Student's name is " + userData.name + ".\n" + "Student is available from " + String(userData.availability.startTime) + " to " + String(userData.availability.endTime) + ".\n"
+        console.log(userInput)
 
-      
+        fetch('http://127.0.0.1:8000/api/query', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            input: userInput,
+            type: "schedule"
+          }),
+        })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error('Server response was not OK')
+          }
+        })
+        .then(apiResponse => {
+          handleResult(apiResponse)
+        })
+        .catch(error => {
+          console.error('Error')
+        })
+      };
     
       return (
         <div className="GettingStarted" style={{ background: '#FFF' }}>
