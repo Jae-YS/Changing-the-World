@@ -2,56 +2,62 @@ import React, { useState } from 'react';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
 
+const ScheduleItem = ({ item, id, isSelected, onToggle, onNavigate }) => {
+    return (
+      <div className='item'>
+        <div className="title" onClick={() => onToggle(id)}>
+          <h3>{item.subject}</h3>
+          <h4>{item.title}</h4>
+          <span>{isSelected ? '-' : '+'}</span>
+        </div>  
+        {isSelected && (
+          <div className='contentshow'>
+            <p>{item.description}</p>
+            <button onClick={() => onNavigate(item.destination)}>
+              {item.button}
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  };
 
-function MyResources(){
-    const [selected, setSelected] = useState(null)
 
+  function MyResources(){
+    const [selected, setSelected] = useState(null);
+    const navigate = useNavigate();
 
     const toggle = (id) => {
         setSelected(selected === id ? null : id);
-    }
-
-    const navigate = useNavigate();
-
-
-
+    };
 
     return (
         <div className="MySchedule">
-        <div>
             <h1>My Resources</h1>
             <div className='accordion'>
                 {data.map((block, blockIndex) => (
                     <div key={blockIndex}>
                         <h2>{block.date}</h2>
                         {block.details.map((item, itemIndex) => {
-                            // Create a unique ID for each item
                             const id = `${blockIndex}-${itemIndex}`;
                             return (
-                                <div className='item' key={id}>
-                                    <div className="title" onClick={() => toggle(id)}>
-                                        <h3>{item.subject}</h3>
-                                        <h4>{item.title}</h4>
-                                        <span>{selected === id ? '-' : '+'}</span>
-                                    </div>  
-                                    {selected === id && (
-                                        <div className='contentshow'>
-                                            <p>{item.description}</p>
-                                            <button onClick={() => navigate(item.destination)}>
-                                                {item.button}
-                                            </button>
-                                        </div>
-                                    )}
-                                </div>
+                                <ScheduleItem
+                                    key={id}
+                                    item={item}
+                                    id={id}
+                                    isSelected={selected === id}
+                                    onToggle={toggle}
+                                    onNavigate={navigate}
+                                />
                             );
                         })}
                     </div>
                 ))}
             </div>
         </div>
-        </div>
     );
 }
+
 const data = [
     {
         date: "Monday, Nov 4, 2023",
@@ -69,7 +75,6 @@ const data = [
                 button: "Start",
                 destination: '/resources/homework'},
         ]
-        
     },
     {
         date: "Monday, Nov 4, 2023",
