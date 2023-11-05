@@ -31,9 +31,23 @@ function GettingStarted() {
     
       const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
-        // Process the data
+
+        var res = ""
+
+        const userData = {
+          ...formData,
+          availability
+        }
+
+        console.log(userData)
+
+
+        // TODO: remove this once backend is set up
+        res += "Student's name is " + userData.name + ".\n" + "Student is available from " + String(userData.availability.startTime) + " to " + String(userData.availability.endTime) + ".\n"
+        console.log(res)
       };
+
+      
     
       return (
         <div className="GettingStarted" style={{ background: '#FFF' }}>
