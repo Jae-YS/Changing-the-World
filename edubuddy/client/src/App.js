@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import GettingStarted from "./Components/GettingStarted.js";
-import HelloWorld from "./Components/HelloWorld.js";
 import MyCurriculum from "./Components/MyCurriculum.js";
 import MySchedule from "./Components/MySchedule.js";
 import MyResources from "./Components/MyResources.js";
@@ -12,7 +11,6 @@ function App() {
   const [userSchedule, setUserSchedule] = useState("");
   const [userCurriculum, setUserCurriculum] = useState("");
   const [user, setUser] = useState({});
-
 
   // const extractEducationLevel = (educationLevel) => {
   //   var grade = educationLevel.replace(/[^0-9.]/g, "");
@@ -41,6 +39,7 @@ function App() {
 
       // Generate curriculum with the updated educationLevel
       generateCurriculum(userData.educationLevel);
+      console.log(userCurriculum);
     } catch (error) {
       console.error("Error in updateUser: ", error);
     }

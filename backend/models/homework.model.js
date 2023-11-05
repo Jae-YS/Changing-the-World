@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 // Create a user schema
 const homeworkSchema = new Schema({
   homework_id: {
-    type: Number, // Assuming userId is a numeric primary key
+    type: String,
     unique: true, // Ensures uniqueness
     required: true,
   },
