@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #FFFFFF; /* Assuming a white background */
+  background-color: rgb(229 231 235);; /* Assuming a white background */
   padding: 10px 0; /* Adjust padding to your needs */
 }
 
