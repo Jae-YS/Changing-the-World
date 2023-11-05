@@ -1,0 +1,159 @@
+.GettingStarted {
+  text-align: center;
+}
+
+.MySchedule {
+  padding: 0 80px;
+}
+
+.MyCurriculum {
+  padding: 0 300px;
+}
+
+form {
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 1em;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.form-group {
+  margin-bottom: 1em;
+}
+
+label {
+  display: block;
+  margin-bottom: .5em;
+  float: left;
+}
+
+input {
+  width: 100%;
+  padding: .5em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  width: 100px; /* Adjust as needed or remove */
+  padding: .5em;
+  border: none;
+  border-radius: 5px;
+  background-color: #85662b;
+  color: white;
+  cursor: pointer;
+}
+
+
+select {
+  width: 100%;
+  padding: .5em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.accordion {
+  width: 500px;
+}
+
+.item {
+  background: #f0ebe1;
+  margin-bottom: 5px;
+  padding: 10px 20px;
+
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #85662b;
+  cursor: pointer
+}
+
+.content {
+  color: #8b7f75;
+  display: flex; /* Add this line */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically (if you want vertical centering) */
+  flex-direction: column; /* Stack children vertically */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0,1,0,1);
+}
+
+
+
+
+.contentshow {
+  height: auto; /* You can remove this line if using max-height for the transition */
+  max-height: 9999px; /* Correct the unit from 'p' to 'px' */
+  display: flex; /* Make sure flex properties are active */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: max-height 0.5s cubic-bezier(0,1,0,1);
+}
+
+.curriculum-page {
+  text-align: center;
+}
+
+.subject-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 10px; /* Adjust gap between buttons as needed */
+}
+
+.subject-button {
+  width: calc(33.333% - 20px); /* Adjust button width for margins or gaps */
+  height: 130px;
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  background-color: #D9D9D9;
+  font-size: x-large
+}
+
+.subject-button:hover {
+  opacity: 0.9;
+}
+
+.subject-button.active {
+  background-color: #F4B640;
+}
+
+.subject-details {
+  margin-top: 20px;
+}
+
+.subject-details h3 {
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.subject-details ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.editor-spacing {
+  margin-bottom: 10px;
+}
+
+.button-spacing {
+  margin-top: 10px;
+}

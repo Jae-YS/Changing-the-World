@@ -1,0 +1,30 @@
+.navigation-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFFFFF; /* Assuming a white background */
+  padding: 10px 0; /* Adjust padding to your needs */
+}
+
+.nav-item {
+  color: var(--Actionable-Item, #18A0FB);
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.225px;
+  text-decoration: none;
+  margin: 0 15px; /* Adjust spacing between items */
+  padding: 5px 10px; /* Adjust for better click area */
+}
+
+.nav-item:hover {
+  text-decoration: underline; /* Style for hover effect */
+}
+
+/* React Router NavLink active style */
+.active {
+  border-bottom: 2px solid #18A0FB;
+}
