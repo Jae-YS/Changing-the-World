@@ -1,8 +1,10 @@
+from flask import Flask, jsonify, request
 import boto3
 import json
-from prompts import *
-from wolframalpha import *
+from prompts import help_prompt, math_prompt, social_studies_prompt, english_prompt, science_prompt, PE_prompt, art_prompt, schedule_prompt
+from wolfram import w_query, step_by_step
 
+app = Flask(__name__)
 
 #Replace these values with the matching credentials upon usage
 region_name = "us-east-1"
@@ -35,9 +37,9 @@ def query(input: str, type: str) -> str:
     elif type == "schedule": prompt = schedule_prompt
     elif type == "help" or type == "math_help": 
         if type == "help":
-            input = input + "\n" + w.query(input)
+            input = input + "\n" + w_query(input)
         elif type == "math_help":
-            input = input + "\n" + w.query(input)
+            input = input + "\n" + w_query(input)
         prompt = help_prompt
 
     body = json.dumps({
@@ -51,3 +53,27 @@ def query(input: str, type: str) -> str:
     response = bedrock.invoke_model(body=body, modelId=modelId, accept=accept, contentType=contentType)
     response_body = json.loads(response.get('body').read())
     return response_body.get('completion')
+
+@app.route('/api/query', methods=['POST'])
+def handle_query():
+    # Retrieve the data from the request
+    data = request.json
+
+    # Extract the input and the type from the request data
+    user_input = data.get('input')
+    query_type = data.get('type')
+
+    # Check if the required data is present
+    if not user_input or not query_type:
+        return jsonify({'error': 'Missing input or type parameter'}), 400
+
+    try:
+        # Call your query function
+        result = query(input=user_input, type=query_type)
+        return jsonify({'response': result}), 200
+    except Exception as e:
+        # In case of an error
+        return jsonify({'error': str(e)}), 500
+
+if __name__ == '__main__':
+    app.run(debug=True)
