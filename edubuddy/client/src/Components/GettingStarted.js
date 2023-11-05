@@ -54,103 +54,142 @@ function GettingStarted({ updateUser }) {
 
     console.log(userData);
 
-        // TODO: remove this once backend is set up
-        userInput += "Student's name is " + userData.name + ".\n" + "Student is available from " + String(userData.availability.startTime) + " to " + String(userData.availability.endTime) + ".\n"
-        console.log(userInput)
 
-        fetch('http://127.0.0.1:8000/api/query', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            input: userInput,
-            type: "schedule"
-          }),
-        })
-        .then(response => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw new Error('Server response was not OK')
-          }
-        })
-        .then(apiResponse => {
-          handleResult(apiResponse)
-        })
-        .catch(error => {
-          console.error('Error')
-        })
-      };
-    
-      return (
-        <div className="GettingStarted" style={{ background: '#FFF' }}>
-          <header className="App-header">
-            <h1>EduBuddy</h1>
-          </header>
-          <main>
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="name">What's your name?</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="birthDate">When were you born?</label>
-                <input
-                  type="date"
-                  id="birthDate"
-                  name="birthDate"
-                  value={formData.birthDate}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="educationLevel">What education level are you at?</label>
-                <select
-                  id="educationLevel"
-                  name="educationLevel"
-                  value={formData.educationLevel}
-                  onChange={handleChange}
-                >
-                  <option value="">Select your grade</option>
-                  {[...Array(12)].map((_, index) => (
-                    <option key={index} value={`Grade ${index + 1}`}>
-                      Grade {index + 1}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="form-group">
-              <label htmlFor="startTime">Daily Available Start Time:</label>
-              <input
-                type="time"
-                id="startTime"
-                name="startTime"
-                value={availability.startTime}
-                onChange={handleAvailabilityChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="endTime">Daily Available End Time:</label>
-              <input
-                type="time"
-                id="endTime"
-                name="endTime"
-                value={availability.endTime}
-                onChange={handleAvailabilityChange}
-              />
-            </div>
-              <button type="submit">Submit</button>
-            </form>
-          </main>
-        </div>
-      );
+    // TODO: remove this once backend is set up
+    userInput +=
+      "Student's name is " +
+      userData.name +
+      ".\n" +
+      "Student is available from " +
+      String(userData.availability.startTime) +
+      " to " +
+      String(userData.availability.endTime) +
+      ".\n";
+    console.log(userInput);
+
+    fetch("http://127.0.0.1:5000/api/query", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        input: userInput,
+        type: "schedule",
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Server response was not OK");
+        }
+      })
+      .then((apiResponse) => {
+        generateCurriculum();
+        handleResult(userData, apiResponse);
+      })
+      .catch((error) => {
+        console.error("Error");
+      });
+  };
+  const generateCurriculum = () => {
+    fetch("http://127.0.0.1:5000/api/query", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        input: 2,
+        type: "curriculum",
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Server response was not OK");
+        }
+      })
+      .then((apiResponse) => {
+        console.log(apiResponse);
+      })
+      .catch((error) => {
+        console.error("Error");
+      });
+  };
+
+  return (
+    <div className="GettingStarted" style={{ background: "#FFF" }}>
+      <header className="App-header">
+        <h1>EduBuddy</h1>
+      </header>
+      <main>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="name">What's your name?</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="birthDate">When were you born?</label>
+            <input
+              type="date"
+              id="birthDate"
+              name="birthDate"
+              value={formData.birthDate}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="educationLevel">
+              What education level are you at?
+            </label>
+            <select
+              id="educationLevel"
+              name="educationLevel"
+              value={formData.educationLevel}
+              onChange={handleChange}
+            >
+              <option value="">Select your grade</option>
+              {[...Array(12)].map((_, index) => (
+                <option key={index} value={`Grade ${index + 1}`}>
+                  Grade {index + 1}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label htmlFor="startTime">Daily Available Start Time:</label>
+            <input
+              type="time"
+              id="startTime"
+              name="startTime"
+              value={availability.startTime}
+              onChange={handleAvailabilityChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="endTime">Daily Available End Time:</label>
+            <input
+              type="time"
+              id="endTime"
+              name="endTime"
+              value={availability.endTime}
+              onChange={handleAvailabilityChange}
+            />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </main>
+    </div>
+  );
+
+        
 }
 
 export default GettingStarted;
