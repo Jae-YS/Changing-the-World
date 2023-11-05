@@ -3,7 +3,7 @@
 }
 
 .MySchedule {
-  padding: 0 20px;
+  padding: 0 80px;
 }
 
 .MyCurriculum {
@@ -45,9 +45,6 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #85662b;
-}
 
 select {
   width: 100%;
@@ -151,4 +148,12 @@ select {
   list-style: none;
   padding: 0;
   text-align: left;
+}
+
+.editor-spacing {
+  margin-bottom: 10px;
+}
+
+.button-spacing {
+  margin-top: 10px;
 }

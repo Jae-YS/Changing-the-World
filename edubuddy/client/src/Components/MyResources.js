@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../App.css';
+import { useNavigate } from 'react-router-dom';
 
 
 function MyResources(){
@@ -9,6 +10,11 @@ function MyResources(){
     const toggle = (id) => {
         setSelected(selected === id ? null : id);
     }
+
+    const navigate = useNavigate();
+
+
+
 
     return (
         <div className="MySchedule">
@@ -31,7 +37,9 @@ function MyResources(){
                                     {selected === id && (
                                         <div className='contentshow'>
                                             <p>{item.description}</p>
-                                            <button>{item.button}</button>
+                                            <button onClick={() => navigate(item.destination)}>
+                                                {item.button}
+                                            </button>
                                         </div>
                                     )}
                                 </div>
@@ -52,12 +60,14 @@ const data = [
                 subject: "Reading & Writing", 
                 title: "Lecture",
                 description: 'Something working Is this actually',
-                button: 'Start'
+                button: 'Start',
+                destination: '/resources/homework'
             },
             {   subject: "Mathematics", 
                 title: "Homework", 
                 description: "Creative Writing - Imagine you find a magic lamp...", 
-                button: "Start" },
+                button: "Start",
+                destination: '/resources/homework'},
         ]
         
     },
@@ -68,12 +78,14 @@ const data = [
                 subject: "Reading & Writing", 
                 title: "Lecture",
                 description: 'Something working Is this actually',
-                button: 'Start'
+                button: 'Start',
+                destination: '/resources/homework'
             },
             {   subject: "Mathematics", 
                 title: "Homework", 
                 description: "Creative Writing - Imagine you find a magic lamp...", 
-                button: "Start" },
+                button: "Start",
+                destination: '/resources/homework' },
         ]
     }
 ]

@@ -6,6 +6,8 @@ import MyCurriculum from './Components/MyCurriculum.js';
 import MySchedule from "./Components/MySchedule.js"
 import MyResources from "./Components/MyResources.js"
 import Navigation from './Components/Navigation.js';
+import Homework from "./Components/Homework.js"
+
 
 function App() {
   return (
@@ -16,7 +18,7 @@ function App() {
         <Route path="/schedule" element={<MySchedule />} />
         <Route path="/curriculum" element={<MyCurriculum />} />
         <Route path="/resources" element={<MyResources />} />
-        <Route path="/dummy" element={<HelloWorld />} />
+        <Route path="/resources/homework" element={<Homework />} />
       </Routes>
     </Router>
   );
