@@ -54,6 +54,7 @@ function GettingStarted({ updateUser }) {
 
     console.log(userData);
 
+
     // TODO: remove this once backend is set up
     userInput +=
       "Student's name is " +
@@ -66,7 +67,9 @@ function GettingStarted({ updateUser }) {
       ".\n";
     console.log(userInput);
 
+
     fetch("http://127.0.0.1:10000/api/query", {
+
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -84,7 +87,33 @@ function GettingStarted({ updateUser }) {
         }
       })
       .then((apiResponse) => {
+        generateCurriculum();
         handleResult(userData, apiResponse);
+      })
+      .catch((error) => {
+        console.error("Error");
+      });
+  };
+  const generateCurriculum = () => {
+    fetch("http://127.0.0.1:5000/api/query", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        input: 2,
+        type: "curriculum",
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Server response was not OK");
+        }
+      })
+      .then((apiResponse) => {
+        console.log(apiResponse);
       })
       .catch((error) => {
         console.error("Error");
@@ -161,6 +190,8 @@ function GettingStarted({ updateUser }) {
       </main>
     </div>
   );
+
+        
 }
 
 export default GettingStarted;

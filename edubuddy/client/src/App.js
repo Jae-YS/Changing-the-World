@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import GettingStarted from "./Components/GettingStarted.js";
-import MyCurriculum from "./Components/MyCurriculum.js";
-import MySchedule from "./Components/MySchedule.js";
-import MyResources from "./Components/MyResources.js";
-import Navigation from "./Components/Navigation.js";
-import Homework from "./Components/Homework.js";
+import MyCurriculum from './Components/MyCurriculum.js';
+import MySchedule from "./Components/MySchedule.js"
+import MyResources from "./Components/MyResources.js"
+import Navigation from './Components/Navigation.js';
+import Homework from "./Components/Homework.js"
+import HelpMe from "./Components/HelpMe.js";
+
+
 
 function App() {
   const [userSchedule, setUserSchedule] = useState("");
@@ -76,27 +79,12 @@ function App() {
     <Router>
       <Navigation userSchedule={userSchedule}></Navigation>
       <Routes>
-        <Route
-          path="/"
-          element={<GettingStarted updateUser={updateUser} />}
-          exact
-        />
-        <Route
-          path="/schedule"
-          element={<MySchedule userSchedule={userSchedule} />}
-        />
-        <Route
-          path="/curriculum"
-          element={<MyCurriculum user={user} userCurriculum={userCurriculum} />}
-        />
-        <Route
-          path="/resources"
-          element={<MyResources userCurriculum={userCurriculum} user={user} />}
-        />
-        <Route
-          path="/resources/homework"
-          element={<Homework userSchedule={userSchedule} />}
-        />
+        <Route path="/" element={<GettingStarted />} exact />
+        <Route path="/schedule" element={<MySchedule />} />
+        <Route path="/curriculum" element={<MyCurriculum />} />
+        <Route path="/resources" element={<MyResources />} />
+        <Route path="/resources/homework" element={<Homework />} />
+        <Route path="/help-me" element={<HelpMe />}/>
       </Routes>
     </Router>
   );
