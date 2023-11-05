@@ -6,6 +6,7 @@ import MySchedule from "./Components/MySchedule.js";
 import MyResources from "./Components/MyResources.js";
 import Navigation from "./Components/Navigation.js";
 import Homework from "./Components/Homework.js";
+import HelpMe from "./Components/HelpMe.js";
 
 function App() {
   const [userSchedule, setUserSchedule] = useState("");
@@ -47,7 +48,7 @@ function App() {
 
   const generateCurriculum = (userEducationLevel) => {
     console.log("here");
-    fetch("http://127.0.0.1:12000/api/query", {
+    fetch("http://127.0.0.1:10000/api/query", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -93,10 +94,8 @@ function App() {
           path="/resources"
           element={<MyResources userCurriculum={userCurriculum} user={user} />}
         />
-        <Route
-          path="/resources/homework"
-          element={<Homework userSchedule={userSchedule} />}
-        />
+        <Route path="/resources/homework" element={<Homework />} />
+        <Route path="/help-me" element={<HelpMe />} />
       </Routes>
     </Router>
   );

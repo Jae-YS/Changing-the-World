@@ -66,7 +66,7 @@ function GettingStarted({ updateUser }) {
       ".\n";
     console.log(userInput);
 
-    fetch("http://127.0.0.1:12000/api/query", {
+    fetch("http://127.0.0.1:10000/api/query", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

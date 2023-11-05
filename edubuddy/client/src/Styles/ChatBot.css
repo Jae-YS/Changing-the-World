@@ -1,0 +1,147 @@
+
+
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;300;400;500;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Alegreya Sans", sans-serif;
+}
+
+
+#textarea-chat {
+  width: 100%;
+
+  color: black;
+  font-size: 18px;
+
+  padding: 10px;
+  background: transparent;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+/* Button styling for the send button */
+#button-chat {
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+}
+
+
+/* General styling for the entire app */
+#app {
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#chat_container {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  padding-bottom: 20px;
+  scroll-behavior: smooth;
+}
+
+/* Hiding the scrollbar for a cleaner look */
+#chat_container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Firefox scrollbar hide */
+#chat_container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Styling for each chat message wrapper */
+.wrapper {
+  width: 100%;
+  padding: 15px;
+}
+
+/* Different background for AI messages */
+.ai {
+  background:rgb(229 231 235);
+}
+
+
+/* Chat message layout */
+.chat {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+
+/* Profile image styling */
+.profile {
+  width: 36px;
+  height: 36px;
+  border-radius: 5px;
+  background: #5436DA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Different profile background for AI */
+.ai .profile {
+  background: #10a37f;
+}
+
+/* Profile image styling */
+.profile img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+.message {
+  flex: 1;
+  color: black;
+  font-size: 20px;
+  max-width: 100%;
+  overflow-x: scroll;
+  white-space: pre-wrap; 
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+/* Hiding the scrollbar within messages */
+.message::-webkit-scrollbar {
+  display: none;
+}
+
+/* Form styling at the bottom of the chat */
+.formInput {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 10px;
+  background: rgb(229 231 235);;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
