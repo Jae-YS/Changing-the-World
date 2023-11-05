@@ -21,7 +21,6 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 #     if request.method == 'GET':
 #         return "First test passed"
 
-CORS(app)
 
 #Replace these values with the matching credentials upon usage
 region_name = "us-east-1"
@@ -99,4 +98,5 @@ def handle_query():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(port=10000, debug=True)
+    app.run(port=10000,debug=True)
+
