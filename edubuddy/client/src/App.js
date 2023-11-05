@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import GettingStarted from "./Components/GettingStarted.js";
-import HelloWorld from "./Components/HelloWorld.js"
 import MyCurriculum from './Components/MyCurriculum.js';
 import MySchedule from "./Components/MySchedule.js"
 import MyResources from "./Components/MyResources.js"
