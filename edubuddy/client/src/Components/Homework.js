@@ -34,7 +34,7 @@ const HomeworkPage = () => {
         <h2>Submission</h2>
         <Editor
             apiKey = "jdek6n7e8ne3sfx6av48m0vti944h59kzubnndzzch2ongts"
-          initialValue="<p>This is the initial content of the editor</p>"
+          initialValue="<p>Type your answer here</p>"
           init={{
             height: 500,
             menubar: false,
