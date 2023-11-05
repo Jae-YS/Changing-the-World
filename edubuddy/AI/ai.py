@@ -2,10 +2,24 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import boto3
 import json
+
 from prompts import help_prompt, math_prompt, social_studies_prompt, english_prompt, english_prompt_1, science_prompt, PE_prompt, art_prompt, schedule_prompt, curriculum_prompt
-from wolfram import w_query, step_by_step
+from wolfram import w_query
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+CORS(app)
+# cors = CORS(app, resources={r"/api/query": {"origins": "*"}})
+app.config['CORS_HEADERS'] = 'Content-Type'
+
+# @app.route('/')
+# def hello():
+#     return "Hello World!"
+
+# @app.route('/test1', method=['GET'])
+# def firstTest():
+#     if request.method == 'GET':
+#         return "First test passed"
 
 CORS(app)
 
@@ -40,12 +54,15 @@ def query(input: str, type: str) -> str:
     elif type == "art": prompt = art_prompt
     elif type == "schedule": prompt = schedule_prompt
     elif type == "curriculum": prompt = curriculum_prompt
-    elif type == "help" or type == "math_help": 
-        if type == "help":
-            input = input + "\n" + w_query(input)
-        elif type == "math_help":
-            input = input + "\n" + w_query(input)
-        prompt = help_prompt
+    elif type == "help" or type == "math_help": prompt = help_prompt
+
+    input = input + w_query(input)
+    print(input)
+        # if type == "help":
+        #     input = input + "\n" + w_query(input)
+        # elif type == "math_help":
+        #     input = input + "\n" + w_query(input)
+
 
     body = json.dumps({
         "prompt": prompt.format(input),
@@ -59,7 +76,8 @@ def query(input: str, type: str) -> str:
     response_body = json.loads(response.get('body').read())
     return response_body.get('completion')
 
-@app.route('/api/query', methods=['POST'])
+@app.route('/api/query', methods=['POST', 'GET'])
+@cross_origin(origin='*',headers=['Content-Type','Authorization'])
 def handle_query():
     # Retrieve the data from the request
     data = request.json
@@ -81,4 +99,4 @@ def handle_query():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(port=12000,debug=True)
+    app.run(port=10000, debug=True)

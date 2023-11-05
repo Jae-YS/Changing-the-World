@@ -54,6 +54,7 @@ function GettingStarted({ updateUser }) {
 
     console.log(userData);
 
+
     // TODO: remove this once backend is set up
     userInput +=
       "Student's name is " +
@@ -187,6 +188,8 @@ function GettingStarted({ updateUser }) {
       </main>
     </div>
   );
+
+        
 }
 
 export default GettingStarted;
