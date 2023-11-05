@@ -1,7 +1,6 @@
 import React from 'react';
 import '../App.css';
 
-
 const ScheduleItem = ({ event }) => {
     return (
       <div className="schedule-item">
