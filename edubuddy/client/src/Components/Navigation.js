@@ -9,6 +9,7 @@ function Navigation() {
         <NavLink to="/schedule" className='nav-item' activeClassName="active">My Schedule</NavLink>
         <NavLink to="/curriculum" className='nav-item' activeClassName="active">My Curriculum</NavLink>
         <NavLink to="/resources" className='nav-item' activeClassName="active">My Resources</NavLink>
+        <NavLink to="/help-me" className='nav-item' activeClassName="active">Chat Buddy</NavLink>
       </div>
     );
 }

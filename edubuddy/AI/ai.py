@@ -1,10 +1,23 @@
 from flask import Flask, jsonify, request
 import boto3
 import json
-from prompts import help_prompt, math_prompt, social_studies_prompt, english_prompt, science_prompt, PE_prompt, art_prompt, schedule_prompt
+from prompts import help_prompt, math_prompt, social_studies_prompt, english_prompt, science_prompt, PE_prompt, art_prompt, schedule_prompt, schedule_prompt_1
 from wolfram import w_query, step_by_step
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+CORS(app)
+# cors = CORS(app, resources={r"/api/query": {"origins": "*"}})
+app.config['CORS_HEADERS'] = 'Content-Type'
+
+# @app.route('/')
+# def hello():
+#     return "Hello World!"
+
+# @app.route('/test1', method=['GET'])
+# def firstTest():
+#     if request.method == 'GET':
+#         return "First test passed"
 
 #Replace these values with the matching credentials upon usage
 region_name = "us-east-1"
@@ -54,7 +67,8 @@ def query(input: str, type: str) -> str:
     response_body = json.loads(response.get('body').read())
     return response_body.get('completion')
 
-@app.route('/api/query', methods=['POST'])
+@app.route('/api/query', methods=['POST', 'GET'])
+@cross_origin(origin='*',headers=['Content-Type','Authorization'])
 def handle_query():
     # Retrieve the data from the request
     data = request.json
@@ -76,4 +90,4 @@ def handle_query():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=10000, debug=True)

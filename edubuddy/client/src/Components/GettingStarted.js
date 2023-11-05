@@ -54,7 +54,7 @@ function GettingStarted() {
         userInput += "Student's name is " + userData.name + ".\n" + "Student is available from " + String(userData.availability.startTime) + " to " + String(userData.availability.endTime) + ".\n"
         console.log(userInput)
 
-        fetch('http://127.0.0.1:8000/api/query', {
+        fetch('http://127.0.0.1:5000/api/query', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
